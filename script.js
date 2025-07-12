@@ -1,5 +1,8 @@
 // Configuración de la API del clima
-const WEATHER_API_KEY = 'tu_api_key_aqui'; // Reemplazar con tu API key de OpenWeatherMap
+// La API key se configura a través de variables de entorno en producción
+// Para desarrollo local, reemplaza 'tu_api_key_aqui' con tu API key real
+// Obtén tu API key gratuita en: https://openweathermap.org/api
+const WEATHER_API_KEY = 'tu_api_key_aqui';
 const BUENOS_AIRES_COORDS = {
     lat: -34.6118,
     lon: -58.3960

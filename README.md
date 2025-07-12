@@ -26,7 +26,13 @@ Una landing page moderna y minimalista que cambia dinámicamente su paleta de co
    cd landing-hora-clima
    ```
 
-2. **Abre el archivo `index.html`** en tu navegador web
+2. **Configura el entorno de desarrollo** (opcional):
+   ```bash
+   ./dev-setup.sh
+   ```
+   Este script creará automáticamente el archivo `.env` y te guiará para configurar tu API key.
+
+3. **Abre el archivo `index.html`** en tu navegador web
 
    O si prefieres usar un servidor local:
    ```bash
@@ -40,7 +46,7 @@ Una landing page moderna y minimalista que cambia dinámicamente su paleta de co
    php -S localhost:8000
    ```
 
-3. **Accede a la aplicación** en `http://localhost:8000`
+4. **Accede a la aplicación** en `http://localhost:8000`
 
 ### Despliegue con Docker
 
@@ -72,9 +78,10 @@ Una landing page moderna y minimalista que cambia dinámicamente su paleta de co
    - **Puerto**: 80
    - **Comando**: `nginx -g "daemon off;"`
    - **Health Check**: `curl -f http://localhost/health`
-3. **Variables de entorno** (opcionales):
-   - `NGINX_HOST`: localhost
-   - `NGINX_PORT`: 80
+3. **Variables de entorno**:
+   - `WEATHER_API_KEY`: Tu API key de OpenWeatherMap (requerido para datos reales)
+   - `NGINX_HOST`: localhost (opcional)
+   - `NGINX_PORT`: 80 (opcional)
 4. **Deploy** la aplicación
 
 La aplicación está optimizada para Coolify y incluye:
@@ -89,20 +96,40 @@ La aplicación está optimizada para Coolify y incluye:
 
 Para obtener datos reales del clima, necesitas una API key de OpenWeatherMap:
 
+### Opción 1: Variables de Entorno (Recomendado para Producción)
+
 1. **Regístrate** en [OpenWeatherMap](https://openweathermap.org/api)
 2. **Obtén tu API key** gratuita
-3. **Edita el archivo `script.js`** y reemplaza:
-   ```javascript
-   const WEATHER_API_KEY = 'tu_api_key_aqui';
+3. **Crea un archivo `.env`** basado en `env.example`:
+   ```bash
+   cp env.example .env
    ```
-   con tu API key real:
-   ```javascript
-   const WEATHER_API_KEY = 'tu_api_key_real_aqui';
+4. **Edita el archivo `.env`** y agrega tu API key:
+   ```env
+   WEATHER_API_KEY=tu_api_key_real_aqui
    ```
+
+#### Con Docker Compose:
+```bash
+docker-compose up -d
+```
+
+#### Con Docker:
+```bash
+docker run -d -p 8080:80 -e WEATHER_API_KEY=tu_api_key_real_aqui --name hora-clima-app hora-clima-landing
+```
+
+### Opción 2: Desarrollo Local
+
+Para desarrollo local, puedes editar directamente el archivo `script.js`:
+
+```javascript
+const WEATHER_API_KEY = 'tu_api_key_real_aqui';
+```
 
 ### Datos Simulados (Modo Desarrollo)
 
-Si no tienes una API key, la aplicación funcionará con datos simulados que cambian aleatoriamente cada vez que recargas la página.
+Si no tienes una API key configurada, la aplicación funcionará automáticamente con datos simulados que cambian aleatoriamente cada vez que recargas la página.
 
 ## 🎨 Fondos y Paletas de Colores
 
