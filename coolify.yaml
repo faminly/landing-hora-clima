@@ -1,0 +1,116 @@
+# Configuración para Coolify
+# Este archivo contiene las configuraciones recomendadas para desplegar en Coolify
+
+# Configuración del contenedor
+container:
+  # Imagen base
+  base_image: nginx:alpine
+  
+  # Puerto expuesto
+  port: 80
+  
+  # Variables de entorno
+  environment:
+    - NGINX_HOST=localhost
+    - NGINX_PORT=80
+  
+  # Health check
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost/health"]
+    interval: 30s
+    timeout: 10s
+    retries: 3
+    start_period: 40s
+
+# Configuración de recursos
+resources:
+  # Límites de memoria (en MB)
+  memory_limit: 128
+  memory_reservation: 64
+  
+  # Límites de CPU
+  cpu_limit: 0.5
+  cpu_reservation: 0.25
+
+# Configuración de red
+network:
+  # Puerto interno
+  internal_port: 80
+  
+  # Puerto externo (se asignará automáticamente)
+  external_port: auto
+
+# Configuración de persistencia
+volumes:
+  # Logs de nginx
+  - /var/log/nginx:/var/log/nginx:rw
+
+# Configuración de seguridad
+security:
+  # Usuario no root
+  user: nginx
+  
+  # Modo read-only para archivos de la aplicación
+  read_only: false
+
+# Configuración de monitoreo
+monitoring:
+  # Métricas disponibles
+  metrics:
+    - nginx_status
+    - container_stats
+  
+  # Logs
+  logs:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+
+# Configuración de escalado
+scaling:
+  # Mínimo de réplicas
+  min_replicas: 1
+  
+  # Máximo de réplicas
+  max_replicas: 3
+  
+  # Umbral de CPU para escalado automático
+  cpu_threshold: 70
+  
+  # Umbral de memoria para escalado automático
+  memory_threshold: 80
+
+# Configuración de backup
+backup:
+  # Frecuencia de backup
+  frequency: daily
+  
+  # Retención de backups
+  retention: 7
+
+# Configuración de SSL/TLS
+ssl:
+  # Habilitar SSL automático
+  auto: true
+  
+  # Forzar HTTPS
+  force_https: true
+
+# Configuración de caché
+cache:
+  # Headers de caché para archivos estáticos
+  static_files:
+    - "*.css"
+    - "*.js"
+    - "*.png"
+    - "*.jpg"
+    - "*.jpeg"
+    - "*.gif"
+    - "*.ico"
+    - "*.svg"
+    - "*.woff"
+    - "*.woff2"
+    - "*.ttf"
+    - "*.eot"
+  
+  # Tiempo de caché (en segundos)
+  cache_time: 31536000  # 1 año 

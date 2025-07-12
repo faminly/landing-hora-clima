@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tu-dominio.com/sitemap.xml
+
+# Disallow admin areas (si se agregan en el futuro)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1 

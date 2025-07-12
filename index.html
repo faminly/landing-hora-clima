@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora & Clima - Buenos Aires</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header con información del clima -->
+        <header class="weather-header">
+            <div class="weather-info">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Buenos Aires, Argentina</span>
+                </div>
+                <div class="weather-details">
+                    <div class="temperature">
+                        <span id="temperature">--</span>°C
+                    </div>
+                    <div class="weather-description" id="weather-description">
+                        Cargando...
+                    </div>
+                </div>
+                <div class="time-info">
+                    <div class="current-time" id="current-time">--:--</div>
+                    <div class="current-date" id="current-date">--</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <section class="hero-section">
+                <h1 class="hero-title">Bienvenido a Buenos Aires</h1>
+                <p class="hero-subtitle">
+                    Descubre la magia de la ciudad que nunca duerme. 
+                    Desde el tango en San Telmo hasta la modernidad de Puerto Madero, 
+                    Buenos Aires te espera con sus colores únicos que cambian con cada momento del día.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary">Explorar</button>
+                    <button class="btn btn-secondary">Saber más</button>
+                </div>
+            </section>
+
+            <!-- Formulario de contacto -->
+            <section class="contact-section">
+                <div class="contact-container">
+                    <h2 class="section-title">Contáctanos</h2>
+                    <p class="section-description">
+                        ¿Tienes alguna pregunta o quieres saber más sobre Buenos Aires? 
+                        Envíanos un mensaje y te responderemos pronto.
+                    </p>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="turismo">Información turística</option>
+                                <option value="negocios">Oportunidades de negocio</option>
+                                <option value="cultura">Eventos culturales</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Cuéntanos qué te interesa..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hora & Clima</h3>
+                    <p>Descubre Buenos Aires en cada momento del día</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces útiles</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Turismo</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hora & Clima. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
